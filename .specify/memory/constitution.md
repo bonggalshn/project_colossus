@@ -1,8 +1,8 @@
 <!--
 Sync Impact Report:
-- Version change: 1.7.0 → 1.8.0 (Minor - Added module organization principle)
-- Modified sections: Added "Module Organization" principle
-- Templates requiring updates: ✅ plan-template.md, ✅ spec-template.md, ✅ tasks-template.md
+- Version change: 1.9.1 → 1.9.2 (Patch - Added database name constraint in Technology Stack)
+- Modified sections: Enhanced "VI. Technology Stack" - specify single database name
+- Templates requiring updates: ✅ No template changes required
 - Follow-up TODOs: None
 -->
 
@@ -43,12 +43,28 @@ The frontend must always communicate with the backend using REST API. This ensur
 ### IV. Branch Management
 Never push to the submodule's main or master branch. Always push to a feature branch. Merging to the main or master branch is done manually by the user via pull request.
 
-### V. Technology Stack
-The project uses Java 25 with Spring Boot for the backend and Thymeleaf for the frontend. PostgreSQL is used as the database. The main dependencies are:
+**Specification Workflow**:
+- When `/speckit.specify` is invoked and the feature name is determined, a feature branch MUST be created on the parent module.
+- Immediately after creating the feature branch, the parent module MUST be checked out to that feature branch.
+- All subsequent specification work (planning, tasks) MUST happen on this feature branch.
+- This ensures feature documentation is properly tracked alongside the feature branch.
+
+### V. Submodule Branch Management
+All submodule edits must follow strict branch alignment rules:
+
+- **Branch Name Match**: Any edit on the submodule MUST be done under a feature branch with the same name as the parent module branch.
+- **Branch Checkout**: If the submodule is currently on a different branch than the parent module, you MUST checkout to the correct branch that has the same name as the parent module branch before making any edits.
+- **Branch Creation**: If the required branch does not exist in the submodule repository, you MUST create it from the master branch before making any edits.
+- **Verification**: Always verify the submodule branch matches the parent branch before committing any changes.
+
+This ensures that all code changes in the submodule are properly tracked and associated with their corresponding feature branches in the parent repository.
+
+### VI. Technology Stack
+The project uses Java 25 with Spring Boot for the backend and Thymeleaf for the frontend. PostgreSQL is used as the database with a single database named `colossus_database`. All tables are created within this database as master data. The main dependencies are:
 - spring-boot-starter-webmvc (REST API)
 - spring-boot-starter-thymeleaf (Frontend template engine)
 
-### VI. Backend Structure
+### VII. Backend Structure
 The backend must follow a modular structure:
 - **facade**: The main interface for external communication.
 - **biz-service**: Business logic layer.
@@ -58,7 +74,7 @@ The backend must follow a modular structure:
 - **common-util**: Common utility functions and logic.
 - **common-lang**: Enums, constants, and POJO classes commonly used across the project.
 
-### VII. Frontend Code Standards (Thymeleaf + JavaScript)
+### VIII. Frontend Code Standards (Thymeleaf + JavaScript)
 All Thymeleaf templates and JavaScript must follow these rules:
 
 **Thymeleaf Best Practices:**
@@ -81,7 +97,7 @@ All Thymeleaf templates and JavaScript must follow these rules:
 - Use async/await for asynchronous operations
 - Avoid inline scripts; use external files with th:src="@{/js/file.js}"
 
-### VIII. REST API Standards
+### IX. REST API Standards
 All REST controllers must follow these rules:
 
 **Controller Best Practices:**
@@ -101,7 +117,7 @@ All REST controllers must follow these rules:
 - Create custom exceptions (e.g., `ResourceNotFoundException`, `BadRequestException`)
 - Return consistent error response structure
 
-### IX. Database Access Standards
+### X. Database Access Standards
 All JPA repositories and database operations must follow these rules:
 
 **Repository Best Practices:**
@@ -126,7 +142,7 @@ All JPA repositories and database operations must follow these rules:
 - Cap page sizes in public APIs
 - Enable query logging for development; disable in production
 
-### X. Database Schema Management
+### XI. Database Schema Management
 All database schema changes must follow these rules:
 
 **DDL (Data Definition Language):**
@@ -165,4 +181,4 @@ DML manipulates data within tables (INSERT, UPDATE, DELETE).
 
 The constitution supersedes all other practices. Amendments require documentation, approval, and a migration plan. All PRs and reviews must verify compliance with the constitution. Complexity must be justified and documented.
 
-**Version**: 1.8.0 | **Ratified**: 2026-04-26 | **Last Amended**: 2026-04-27
+**Version**: 1.9.2 | **Ratified**: 2026-04-26 | **Last Amended**: 2026-04-27

@@ -34,6 +34,7 @@
 - Clean code and Javadoc for all methods.
 - Separation of responsibilities between frontend and backend using REST API.
 - Branch management: No direct pushes to main or master; use feature branches and pull requests.
+- Submodule branch management: Submodule branch must match parent module branch name; checkout or create branch before editing.
 - Technology stack: Java 25, Spring Boot, Thymeleaf, PostgreSQL.
 - Backend structure: facade, biz-service, core-service, repository, integration, common-util, common-lang.
 

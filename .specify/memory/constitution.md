@@ -1,7 +1,7 @@
 <!--
 Sync Impact Report:
-- Version change: 1.9.0 → 1.9.1 (Patch - Added specification workflow branch checkout rule)
-- Modified sections: Enhanced "IV. Branch Management" principle
+- Version change: 1.9.1 → 1.9.2 (Patch - Added database name constraint in Technology Stack)
+- Modified sections: Enhanced "VI. Technology Stack" - specify single database name
 - Templates requiring updates: ✅ No template changes required
 - Follow-up TODOs: None
 -->
@@ -60,7 +60,7 @@ All submodule edits must follow strict branch alignment rules:
 This ensures that all code changes in the submodule are properly tracked and associated with their corresponding feature branches in the parent repository.
 
 ### VI. Technology Stack
-The project uses Java 25 with Spring Boot for the backend and Thymeleaf for the frontend. PostgreSQL is used as the database. The main dependencies are:
+The project uses Java 25 with Spring Boot for the backend and Thymeleaf for the frontend. PostgreSQL is used as the database with a single database named `colossus_database`. All tables are created within this database as master data. The main dependencies are:
 - spring-boot-starter-webmvc (REST API)
 - spring-boot-starter-thymeleaf (Frontend template engine)
 
@@ -181,4 +181,4 @@ DML manipulates data within tables (INSERT, UPDATE, DELETE).
 
 The constitution supersedes all other practices. Amendments require documentation, approval, and a migration plan. All PRs and reviews must verify compliance with the constitution. Complexity must be justified and documented.
 
-**Version**: 1.9.1 | **Ratified**: 2026-04-26 | **Last Amended**: 2026-04-27
+**Version**: 1.9.2 | **Ratified**: 2026-04-26 | **Last Amended**: 2026-04-27

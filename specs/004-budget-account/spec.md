@@ -98,7 +98,7 @@ As a logged-in user, I want to delete a budget account so that I can remove acco
 
 1. **Given** an existing account belonging to the logged-in user, **When** the user confirms deletion, **Then** the account is removed from the system.
 2. **Given** an existing account belonging to the logged-in user, **When** the user initiates deletion but cancels, **Then** the account remains unchanged.
-3. **Given** an account with transactions exists, **When** the user deletes the account, **Then** the system first asks for confirmation to delete all transactions under the account; after successful transaction deletion, the system then asks for confirmation to delete the account itself.
+3. **Given** an existing account belonging to the logged-in user, **When** the user deletes the account, **Then** the system removes the account from the list (soft delete).
 
 ---
 

@@ -1,50 +1,26 @@
-# Colossus Engine
+# project_colossus
+Project to manage colossus engine.
 
-Hello World REST API implementation.
+## Constitution
+The project follows the constitution defined in `.specify/memory/constitution.md`.
 
-## Prerequisites
+### Core Principles
+1. **Clean Code and Documentation**: All code must be clean and have Javadoc to explain each method's purpose.
+2. **Separation of Responsibilities**: The frontend must always communicate with the backend using REST API.
+3. **Branch Management**: Never push to the submodule's main or master branch. Always push to a feature branch.
+4. **Technology Stack**: The project uses Java 25 with Spring Boot for the backend and Thymeleaf for the frontend. PostgreSQL is used as the database.
+5. **Backend Structure**: The backend must follow a modular structure:
+   - **facade**: The main interface for external communication.
+   - **biz-service**: Business logic layer.
+   - **core-service**: Core business logic and services.
+   - **repository**: Database interaction layer.
+   - **integration**: Integration with third-party services/systems.
+   - **common-util**: Common utility functions and logic.
+   - **common-lang**: Enums, constants, and POJO classes commonly used across the project.
 
-- Java 25
-- Maven 3.9+
+### Development Workflow
+- **Branch Strategy**: Feature branches must be used for all new developments. Pull requests are required for merging into the main or master branch. Code reviews are mandatory before merging.
+- **Code Quality**: All code must adhere to clean code principles. Javadoc comments are mandatory for all methods. Code must be reviewed and approved by at least one other developer.
 
-## Build
-
-```bash
-cd colossus
-mvn clean install
-```
-
-## Run
-
-```bash
-mvn spring-boot:run
-```
-
-Or use the batch script:
-```bash
-colossus-start.bat
-```
-
-## API Endpoints
-
-| Endpoint | Description |
-|----------|-------------|
-| `GET /api/hello` | Returns "Hello World" |
-| `GET /api/hello?name=Name` | Returns personalized greeting |
-| `GET /api/health` | Returns health status |
-
-## Swagger UI
-
-Access at: http://localhost:8080/swagger-ui.html
-
-## Testing
-
-```bash
-mvn test
-```
-
-## Stop
-
-```bash
-colossus-stop.bat
-```
+### Governance
+The constitution supersedes all other practices. Amendments require documentation, approval, and a migration plan. All PRs and reviews must verify compliance with the constitution. Complexity must be justified and documented.

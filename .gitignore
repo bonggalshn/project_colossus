@@ -1,14 +1,30 @@
-# Log Files
+# Maven
+target/
+*.class
+*.jar
+*.war
+*.ear
 *.log
-colossus.stdout.log
-colossus.stderr.log
-colossus.pid
 
 # IDE
 .idea/
-.vscode/
 *.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+.vscode/
 
 # OS
 .DS_Store
 Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temp
+*.tmp
+*.swp
+*~

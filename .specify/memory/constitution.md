@@ -1,50 +1,151 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+- Version change: 1.6.0 → 1.7.0 (Minor - Updated system definition to include backend and frontend)
+- Modified sections: System (Colossus Engine includes backend and frontend)
+- Templates requiring updates: ✅ plan-template.md, ✅ spec-template.md, ✅ tasks-template.md, ✅ README.md
+- Follow-up TODOs: None
+-->
+
+# Colossus Engine Constitution
+
+**System**: Colossus Engine is the main system containing both backend and frontend components.
+
+- **Backend**: Java 25 with Spring Boot, located in `colossus/src/main/java/id/colossus/`
+- **Frontend**: Thymeleaf templates, located in `colossus/src/main/resources/templates/`
+- **Submodule**: The `colossus` directory is a git submodule (path: colossus, repository: git@github.com:bonggalshn/colossus.git)
+- All feature changes must be implemented in the submodule repository first, then synced to the main repository.
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Clean Code and Documentation
+The code must be clean and have Javadoc to explain each method's purpose. This ensures maintainability and clarity for all developers working on the project.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Separation of Responsibilities
+The frontend must always communicate with the backend using REST API. This ensures a clear separation of responsibilities between the frontend and backend layers.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Branch Management
+Never push to the submodule's main or master branch. Always push to a feature branch. Merging to the main or master branch is done manually by the user via pull request.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Technology Stack
+The project uses Java 25 with Spring Boot for the backend and Thymeleaf for the frontend. PostgreSQL is used as the database. The main dependencies are:
+- spring-boot-starter-webmvc (REST API)
+- spring-boot-starter-thymeleaf (Frontend template engine)
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Backend Structure
+The backend must follow a modular structure:
+- **facade**: The main interface for external communication.
+- **biz-service**: Business logic layer.
+- **core-service**: Core business logic and services.
+- **repository**: Database interaction layer.
+- **integration**: Integration with third-party services/systems.
+- **common-util**: Common utility functions and logic.
+- **common-lang**: Enums, constants, and POJO classes commonly used across the project.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+### VI. Frontend Code Standards (Thymeleaf + JavaScript)
+All Thymeleaf templates and JavaScript must follow these rules:
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+**Thymeleaf Best Practices:**
+- Use fragments for reusable components (header, footer, navigation)
+- Use Layout Dialect (`th:fragment`, `th:replace`) for consistent page structure
+- Keep templates in `src/main/resources/templates/` following naming conventions
+- Use `th:text` and `th:utext` for text content (utext for unescaped HTML)
+- Use `@{/path}` syntax for URL generation (never hardcode URLs)
+- Include CSRF tokens in all forms using `th:csrf`
+- Externalize user-facing text to `messages.properties` for i18n support
+- Keep business logic in controllers, NOT in templates
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+**JavaScript Best Practices:**
+- Place JavaScript in `src/main/resources/static/js/`
+- Use ES6+ syntax with const/let (avoid var)
+- Keep functions small and single-purpose
+- Use meaningful variable and function names
+- Add JSDoc comments for functions
+- Handle errors with try-catch blocks
+- Use async/await for asynchronous operations
+- Avoid inline scripts; use external files with th:src="@{/js/file.js}"
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### VII. REST API Standards
+All REST controllers must follow these rules:
+
+**Controller Best Practices:**
+- Use `@RestController` (not `@Controller`)
+- Use constructor injection for dependencies
+- Use proper HTTP methods: GET (read), POST (create), PUT (replace), PATCH (update), DELETE (remove)
+- Use plural nouns for resource names (e.g., `/users`, `/orders`)
+- Return correct HTTP status codes: 200 (OK), 201 (Created), 204 (No Content), 400 (Bad Request), 404 (Not Found), 500 (Server Error)
+- Use DTOs for request/response (not entities)
+- Apply Jakarta Bean Validation (`@Valid`) for request bodies
+- Keep controllers thin; delegate business logic to services
+- Use `@RequestMapping` for versioned APIs (e.g., `/api/v1/`)
+- Return `ResponseEntity<T>` with specific types (not raw generics)
+
+**Exception Handling:**
+- Use `@RestControllerAdvice` for global exception handling
+- Create custom exceptions (e.g., `ResourceNotFoundException`, `BadRequestException`)
+- Return consistent error response structure
+
+### VIII. Database Access Standards
+All JPA repositories and database operations must follow these rules:
+
+**Repository Best Practices:**
+- Extend `JpaRepository` for standard CRUD operations
+- Use derived query methods for simple lookups
+- Use `@Query` (JPQL) for complex queries
+- Use projections for read-only operations (not full entities)
+- Enable JDBC batching: `spring.jpa.properties.hibernate.jdbc.batch_size=50`
+- Avoid `GenerationType.IDENTITY` for batch inserts
+- Use `@NoRepositoryBean` for reusable base interfaces
+
+**Entity Design:**
+- Use soft deletes (mark as deleted, don't physically remove)
+- Define fetch type as `LAZY` for collections
+- Use `@Transactional` on service methods, not controllers
+- Set `readOnly = true` for read operations
+- Keep transactions short; avoid network calls inside transactions
+
+**Performance:**
+- Treat N+1 queries as bugs; use `JOIN FETCH` or `@EntityGraph`
+- Use pagination with `Pageable` for large datasets
+- Cap page sizes in public APIs
+- Enable query logging for development; disable in production
+
+### IX. Database Schema Management
+All database schema changes must follow these rules:
+
+**DDL (Data Definition Language):**
+DDL defines or modifies database structure (CREATE, ALTER, DROP).
+- Store all DDL scripts in `resources/db/ddl/` directory
+- Use separate files: one file per table or index change
+- Use naming convention: `V<version>__<description>.sql` (Flyway style)
+- Always include comments explaining the purpose
+- Never modify existing DDL files; create new migration files
+
+**DML (Data Manipulation Language):**
+DML manipulates data within tables (INSERT, UPDATE, DELETE).
+- Store all DML scripts in `resources/db/dml/` directory
+- Use for seed data, reference tables, lookups
+- Include rollback scripts when possible
+
+**Single Source of Truth:**
+- All SQL must be stored in the submodule repository (`colossus/resources/db/`)
+- All schema changes must have corresponding SQL migration files
+- Use Flyway or Liquibase for database versioning
+- Never create tables or modify schema via JPA annotations alone
+
+## Development Workflow
+
+### Branch Strategy
+- Feature branches must be used for all new developments.
+- Pull requests are required for merging into the main or master branch.
+- Code reviews are mandatory before merging.
+
+### Code Quality
+- All code must adhere to clean code principles.
+- Javadoc comments are mandatory for all methods.
+- Code must be reviewed and approved by at least one other developer.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+The constitution supersedes all other practices. Amendments require documentation, approval, and a migration plan. All PRs and reviews must verify compliance with the constitution. Complexity must be justified and documented.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.7.0 | **Ratified**: 2026-04-26 | **Last Amended**: 2026-04-26

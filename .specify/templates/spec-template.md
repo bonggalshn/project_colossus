@@ -77,23 +77,15 @@
 
 ## Requirements *(mandatory)*
 
-<!--
-  ACTION REQUIRED: The content in this section represents placeholders.
-  Fill them out with the right functional requirements.
--->
-
 ### Functional Requirements
 
-- **FR-001**: System MUST [specific capability, e.g., "allow users to create accounts"]
-- **FR-002**: System MUST [specific capability, e.g., "validate email addresses"]  
-- **FR-003**: Users MUST be able to [key interaction, e.g., "reset their password"]
-- **FR-004**: System MUST [data requirement, e.g., "persist user preferences"]
-- **FR-005**: System MUST [behavior, e.g., "log all security events"]
-
-*Example of marking unclear requirements:*
-
-- **FR-006**: System MUST authenticate users via [NEEDS CLARIFICATION: auth method not specified - email/password, SSO, OAuth?]
-- **FR-007**: System MUST retain user data for [NEEDS CLARIFICATION: retention period not specified]
+- **FR-001**: System MUST use Java 25 with Spring Boot for the backend.
+- **FR-002**: System MUST use Thymeleaf for the frontend.
+- **FR-003**: System MUST use PostgreSQL as the database.
+- **FR-004**: System MUST follow a modular backend structure: facade, biz-service, core-service, repository, integration, common-util, common-lang.
+- **FR-005**: System MUST have clean code with Javadoc for all methods.
+- **FR-006**: System MUST use REST API for communication between frontend and backend.
+- **FR-007**: System MUST use feature branches for development and pull requests for merging to main or master.
 
 ### Key Entities *(include if feature involves data)*
 

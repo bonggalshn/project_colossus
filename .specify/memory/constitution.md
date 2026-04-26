@@ -1,7 +1,7 @@
 <!--
 Sync Impact Report:
-- Version change: 1.3.0 → 1.4.0 (Minor - Added Frontend Code Standards)
-- Added sections: VI. Frontend Code Standards (Thymeleaf + JavaScript)
+- Version change: 1.4.0 → 1.5.0 (Minor - Added REST API and Database Access Standards)
+- Added sections: VII. REST API Standards, VIII. Database Access Standards
 - Templates requiring updates: ✅ plan-template.md, ✅ spec-template.md, ✅ tasks-template.md, ✅ README.md
 - Follow-up TODOs: None
 -->
@@ -62,6 +62,51 @@ All Thymeleaf templates and JavaScript must follow these rules:
 - Use async/await for asynchronous operations
 - Avoid inline scripts; use external files with th:src="@{/js/file.js}"
 
+### VII. REST API Standards
+All REST controllers must follow these rules:
+
+**Controller Best Practices:**
+- Use `@RestController` (not `@Controller`)
+- Use constructor injection for dependencies
+- Use proper HTTP methods: GET (read), POST (create), PUT (replace), PATCH (update), DELETE (remove)
+- Use plural nouns for resource names (e.g., `/users`, `/orders`)
+- Return correct HTTP status codes: 200 (OK), 201 (Created), 204 (No Content), 400 (Bad Request), 404 (Not Found), 500 (Server Error)
+- Use DTOs for request/response (not entities)
+- Apply Jakarta Bean Validation (`@Valid`) for request bodies
+- Keep controllers thin; delegate business logic to services
+- Use `@RequestMapping` for versioned APIs (e.g., `/api/v1/`)
+- Return `ResponseEntity<T>` with specific types (not raw generics)
+
+**Exception Handling:**
+- Use `@RestControllerAdvice` for global exception handling
+- Create custom exceptions (e.g., `ResourceNotFoundException`, `BadRequestException`)
+- Return consistent error response structure
+
+### VIII. Database Access Standards
+All JPA repositories and database operations must follow these rules:
+
+**Repository Best Practices:**
+- Extend `JpaRepository` for standard CRUD operations
+- Use derived query methods for simple lookups
+- Use `@Query` (JPQL) for complex queries
+- Use projections for read-only operations (not full entities)
+- Enable JDBC batching: `spring.jpa.properties.hibernate.jdbc.batch_size=50`
+- Avoid `GenerationType.IDENTITY` for batch inserts
+- Use `@NoRepositoryBean` for reusable base interfaces
+
+**Entity Design:**
+- Use soft deletes (mark as deleted, don't physically remove)
+- Define fetch type as `LAZY` for collections
+- Use `@Transactional` on service methods, not controllers
+- Set `readOnly = true` for read operations
+- Keep transactions short; avoid network calls inside transactions
+
+**Performance:**
+- Treat N+1 queries as bugs; use `JOIN FETCH` or `@EntityGraph`
+- Use pagination with `Pageable` for large datasets
+- Cap page sizes in public APIs
+- Enable query logging for development; disable in production
+
 ## Development Workflow
 
 ### Branch Strategy
@@ -78,4 +123,4 @@ All Thymeleaf templates and JavaScript must follow these rules:
 
 The constitution supersedes all other practices. Amendments require documentation, approval, and a migration plan. All PRs and reviews must verify compliance with the constitution. Complexity must be justified and documented.
 
-**Version**: 1.4.0 | **Ratified**: 2026-04-26 | **Last Amended**: 2026-04-26
+**Version**: 1.5.0 | **Ratified**: 2026-04-26 | **Last Amended**: 2026-04-26

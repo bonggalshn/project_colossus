@@ -31,7 +31,11 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- Clean code and Javadoc for all methods.
+- Separation of responsibilities between frontend and backend using REST API.
+- Branch management: No direct pushes to main or master; use feature branches and pull requests.
+- Technology stack: Java 25, Spring Boot, Thymeleaf, PostgreSQL.
+- Backend structure: facade, biz-service, core-service, repository, integration, common-util, common-lang.
 
 ## Project Structure
 

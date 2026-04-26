@@ -1,7 +1,7 @@
 <!--
 Sync Impact Report:
-- Version change: 1.4.0 → 1.5.0 (Minor - Added REST API and Database Access Standards)
-- Added sections: VII. REST API Standards, VIII. Database Access Standards
+- Version change: 1.5.0 → 1.6.0 (Minor - Added Database Schema Management)
+- Added sections: IX. Database Schema Management
 - Templates requiring updates: ✅ plan-template.md, ✅ spec-template.md, ✅ tasks-template.md, ✅ README.md
 - Follow-up TODOs: None
 -->
@@ -107,6 +107,29 @@ All JPA repositories and database operations must follow these rules:
 - Cap page sizes in public APIs
 - Enable query logging for development; disable in production
 
+### IX. Database Schema Management
+All database schema changes must follow these rules:
+
+**DDL (Data Definition Language):**
+DDL defines or modifies database structure (CREATE, ALTER, DROP).
+- Store all DDL scripts in `resources/db/ddl/` directory
+- Use separate files: one file per table or index change
+- Use naming convention: `V<version>__<description>.sql` (Flyway style)
+- Always include comments explaining the purpose
+- Never modify existing DDL files; create new migration files
+
+**DML (Data Manipulation Language):**
+DML manipulates data within tables (INSERT, UPDATE, DELETE).
+- Store all DML scripts in `resources/db/dml/` directory
+- Use for seed data, reference tables, lookups
+- Include rollback scripts when possible
+
+**Single Source of Truth:**
+- All SQL must be stored in the submodule repository (`colossus/resources/db/`)
+- All schema changes must have corresponding SQL migration files
+- Use Flyway or Liquibase for database versioning
+- Never create tables or modify schema via JPA annotations alone
+
 ## Development Workflow
 
 ### Branch Strategy
@@ -123,4 +146,4 @@ All JPA repositories and database operations must follow these rules:
 
 The constitution supersedes all other practices. Amendments require documentation, approval, and a migration plan. All PRs and reviews must verify compliance with the constitution. Complexity must be justified and documented.
 
-**Version**: 1.5.0 | **Ratified**: 2026-04-26 | **Last Amended**: 2026-04-26
+**Version**: 1.6.0 | **Ratified**: 2026-04-26 | **Last Amended**: 2026-04-26

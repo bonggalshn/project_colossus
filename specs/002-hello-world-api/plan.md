@@ -81,14 +81,14 @@ colossus/
 │   │   │   ├── integration/
 │   │   │   │   ├── (empty - no external integrations)
 │   │   │   ├── commonutil/
-│   │   │   │   ├── ApiResponse.java
 │   │   │   │   └── Constants.java
 │   │   │   ├── commonlang/
-│   │   │   │   ├── (enums and POJOs if needed)
-│   │   │   │   └── controller/
+│   │   │   │   ├── ApiResponse.java
+│   │   │   │   └── HealthResponse.java
+│   │   │   ├── controller/
 │   │   │   │       ├── HelloWorldController.java
 │   │   │   │       └── HealthCheckController.java
-│   │   │   │   └── exception/
+│   │   │   └── exception/
 │   │   │   │       ├── GlobalExceptionHandler.java
 │   │   │   │       ├── ResourceNotFoundException.java
 │   │   │   │       └── BadRequestException.java

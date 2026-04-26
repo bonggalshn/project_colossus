@@ -15,7 +15,7 @@ This is the MVP. Implementing just these tasks will provide a working API that c
 
 ## Phase 1: Setup
 
-- [X] T001 Create package structure in colossus/src/main/java/id/colossus/ based on backend architecture (facade, bizservice, coreservice, repository, integration, commonutil, commonlang)
+- [X] T001 Create package structure in colossus/src/main/java/id/colossus/helloworld/ based on backend architecture (facade, bizservice, coreservice, repository, integration, commonutil, commonlang)
 
 - [X] T002 Create application configuration in colossus/src/main/resources/application.properties
 
@@ -25,15 +25,15 @@ This is the MVP. Implementing just these tasks will provide a working API that c
 
 ## Phase 2: Foundational
 
-- [X] T005 [P] Create ApiResponse POJO in colossus/src/main/java/id/colossus/commonlang/ApiResponse.java
+- [X] T005 [P] Create ApiResponse POJO in colossus/src/main/java/id/colossus/helloworld/commonlang/ApiResponse.java
 
-- [X] T006 [P] Create HealthResponse POJO in colossus/src/main/java/id/colossus/commonlang/HealthResponse.java
+- [X] T006 [P] Create HealthResponse POJO in colossus/src/main/java/id/colossus/helloworld/commonlang/HealthResponse.java
 
-- [X] T007 Create Constants class in colossus/src/main/java/id/colossus/commonutil/Constants.java
+- [X] T007 Create Constants class in colossus/src/main/java/id/colossus/helloworld/commonutil/Constants.java
 
-- [X] T008 [P] Implement global exception handler with @RestControllerAdvice in colossus/src/main/java/id/colossus/controller/GlobalExceptionHandler.java
+- [X] T008 [P] Implement global exception handler with @RestControllerAdvice in colossus/src/main/java/id/colossus/helloworld/controller/GlobalExceptionHandler.java
 
-- [X] T009 [P] Implement custom exceptions (ResourceNotFoundException, BadRequestException) in colossus/src/main/java/id/colossus/commonlang/
+- [X] T009 [P] Implement custom exceptions (ResourceNotFoundException, BadRequestException) in colossus/src/main/java/id/colossus/helloworld/exception/
 
 ## Phase 3: User Story 1 - Basic Hello World Endpoint (P1)
 
@@ -46,13 +46,13 @@ This is the MVP. Implementing just these tasks will provide a working API that c
 
 ### Implementation
 
-- [X] T011 [US1] Implement HelloWorldController with GET /api/hello endpoint in colossus/src/main/java/id/colossus/controller/HelloWorldController.java
+- [X] T011 [US1] Implement HelloWorldController with GET /api/hello endpoint in colossus/src/main/java/id/colossus/helloworld/controller/HelloWorldController.java
 
-- [X] T012 [US1] Implement HelloWorldFacade in colossus/src/main/java/id/colossus/facade/HelloWorldFacade.java
+- [X] T012 [US1] Implement HelloWorldFacade in colossus/src/main/java/id/colossus/helloworld/facade/HelloWorldFacade.java
 
-- [X] T013 [US1] Implement HelloWorldBizService in colossus/src/main/java/id/colossus/bizservice/HelloWorldBizService.java
+- [X] T013 [US1] Implement HelloWorldBizService in colossus/src/main/java/id/colossus/helloworld/bizservice/HelloWorldBizService.java
 
-- [X] T014 [US1] Implement HelloWorldCoreService in colossus/src/main/java/id/colossus/coreservice/HelloWorldCoreService.java
+- [X] T014 [US1] Implement HelloWorldCoreService in colossus/src/main/java/id/colossus/helloworld/coreservice/HelloWorldCoreService.java
 
 - [X] T015 [US1] Verify endpoint returns correct JSON response per API contract
 
@@ -78,11 +78,11 @@ This is the MVP. Implementing just these tasks will provide a working API that c
 
 ### Implementation
 
-- [X] T020 [US3] Implement HealthCheckController with GET /api/health endpoint
+- [X] T020 [US3] Implement HealthCheckController with GET /api/health endpoint in colossus/src/main/java/id/colossus/helloworld/controller/HealthCheckController.java
 
-- [X] T021 [US3] Implement HealthCheckFacade in colossus/src/main/java/id/colossus/facade/
+- [X] T021 [US3] Implement HealthCheckFacade in colossus/src/main/java/id/colossus/helloworld/facade/HealthCheckFacade.java
 
-- [X] T022 [US3] Implement HealthCheckCoreService for health status logic
+- [X] T022 [US3] Implement HealthCheckCoreService for health status logic in colossus/src/main/java/id/colossus/helloworld/coreservice/HealthCheckCoreService.java
 
 - [X] T023 [US3] Add uptime tracking per API contract
 

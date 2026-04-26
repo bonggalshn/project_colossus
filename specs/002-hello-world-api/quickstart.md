@@ -196,7 +196,7 @@ http://localhost:8080/v3/api-docs
 backend/
 ├── src/
 │   ├── main/
-│   │   ├── java/com/colossus/helloworld/
+│   │   ├── java/id/colossus/helloworld/
 │   │   │   ├── controller/          # REST controllers
 │   │   │   ├── facade/             # Facade layer
 │   │   │   ├── bizservice/         # Business service layer

@@ -23,25 +23,25 @@ User Story 1 (Register/Login) ──┬──> User Story 2 (Create Account)
 
 ### Phase 1: Setup (Project Initialization)
 
-- [ ] T001 Verify colossus submodule is on feature branch `004-budget-account`
-- [ ] T002 Create database migration: V001__create_users_table.sql in colossus/src/main/resources/db/ddl/
-- [ ] T003 Create database migration: V002__create_budget_accounts_table.sql in colossus/src/main/resources/db/ddl/
-- [ ] T004 Configure application.properties with PostgreSQL colossus_database connection in colossus/src/main/resources/
-- [ ] T005 Create module package structure: id.colossus.budget.account in colossus/src/main/java/id/colossus/
-- [ ] T006 Create backend packages: facade, biz-service, core-service, repository in colossus/src/main/java/id/colossus/budget/account/
-- [ ] T007 Create common packages: common-lang, common-util in colossus/src/main/java/id/colossus/
+- [X] T001 Verify colossus submodule is on feature branch `004-budget-account`
+- [X] T002 Create database migration: V001__create_users_table.sql in colossus/src/main/resources/db/ddl/
+- [X] T003 Create database migration: V002__create_budget_accounts_table.sql in colossus/src/main/resources/db/ddl/
+- [X] T004 Configure application.properties with PostgreSQL colossus_database connection in colossus/src/main/resources/
+- [X] T005 Create module package structure: id.colossus.budget.account in colossus/src/main/java/id/colossus/
+- [X] T006 Create backend packages: facade, biz-service, core-service, repository in colossus/src/main/java/id/colossus/budget/account/
+- [X] T007 Create common packages: common-lang, common-util in colossus/src/main/java/id/colossus/
 
 ### Phase 2: Foundational (Blocking Prerequisites)
 
-- [ ] T008 [P] Create User entity in colossus/src/main/java/id/colossus/budget/account/repository/entity/User.java
-- [ ] T009 [P] Create BudgetAccount entity in colossus/src/main/java/id/colossus/budget/account/repository/entity/BudgetAccount.java
-- [ ] T010 [P] Create UserRepository interface in colossus/src/main/java/id/colossus/budget/account/repository/UserRepository.java
-- [ ] T011 [P] Create BudgetAccountRepository interface in colossus/src/main/java/id/colossus/budget/account/repository/BudgetAccountRepository.java
-- [ ] T012 Create AccountType enum in colossus/src/main/java/id/colossus/common/lang/AccountType.java
-- [ ] T013 [P] Create User DTOs (RegisterRequest, LoginRequest) in colossus/src/main/java/id/colossus/common/lang/dto/
-- [ ] T014 [P] Create AuthResponse DTO in colossus/src/main/java/id/colossus/common/lang/dto/
-- [ ] T015 Configure Spring Security with BCrypt password encoder in colossus/src/main/java/id/colossus/budget/account/config/
-- [ ] T016 Create custom exceptions: ResourceNotFoundException, BadRequestException in colossus/src/main/java/id/colossus/budget/account/facade/exception/
+- [X] T008 [P] Create User entity in colossus/src/main/java/id/colossus/budget/account/repository/entity/User.java
+- [X] T009 [P] Create BudgetAccount entity in colossus/src/main/java/id/colossus/budget/account/repository/entity/BudgetAccount.java
+- [X] T010 [P] Create UserRepository interface in colossus/src/main/java/id/colossus/budget/account/repository/UserRepository.java
+- [X] T011 [P] Create BudgetAccountRepository interface in colossus/src/main/java/id/colossus/budget/account/repository/BudgetAccountRepository.java
+- [X] T012 Create AccountType enum in colossus/src/main/java/id/colossus/common/lang/AccountType.java
+- [X] T013 [P] Create User DTOs (RegisterRequest, LoginRequest) in colossus/src/main/java/id/colossus/common/lang/dto/
+- [X] T014 [P] Create AuthResponse DTO in colossus/src/main/java/id/colossus/common/lang/dto/
+- [X] T015 Configure Spring Security with BCrypt password encoder in colossus/src/main/java/id/colossus/budget/account/config/
+- [X] T016 Create custom exceptions: ResourceNotFoundException, BadRequestException in colossus/src/main/java/id/colossus/budget/account/facade/exception/
 
 ### Phase 3: User Story 1 - Register and Login (Priority: P0)
 
@@ -49,15 +49,15 @@ User Story 1 (Register/Login) ──┬──> User Story 2 (Create Account)
 
 **Independent Test**: Register a new user, logout, then login with same credentials - should succeed
 
-- [ ] T017 [US1] Create UserService interface in colossus/src/main/java/id/colossus/budget/account/core-service/UserService.java
-- [ ] T018 [US1] Implement UserService with register and login logic in colossus/src/main/java/id/colossus/budget/account/core-service/impl/UserServiceImpl.java
-- [ ] T019 [US1] Create AuthController with /api/v1/auth/register endpoint in colossus/src/main/java/id/colossus/budget/account/facade/
-- [ ] T020 [US1] Create AuthController with /api/v1/auth/login endpoint in colossus/src/main/java/id/colossus/budget/account/facade/
-- [ ] T021 [US1] Add Spring Security configuration for login endpoint in colossus/src/main/java/id/colossus/budget/account/config/
-- [ ] T022 [US1] Create registration Thymeleaf page in colossus/src/main/resources/templates/auth/register.html
-- [ ] T023 [US1] Create login Thymeleaf page in colossus/src/main/resources/templates/auth/login.html
+- [X] T017 [US1] Create UserService interface in colossus/src/main/java/id/colossus/budget/account/core-service/UserService.java
+- [X] T018 [US1] Implement UserService with register and login logic in colossus/src/main/java/id/colossus/budget/account/core-service/impl/UserServiceImpl.java
+- [X] T019 [US1] Create AuthController with /api/v1/auth/register endpoint in colossus/src/main/java/id/colossus/budget/account/facade/
+- [X] T020 [US1] Create AuthController with /api/v1/auth/login endpoint in colossus/src/main/java/id/colossus/budget/account/facade/
+- [X] T021 [US1] Add Spring Security configuration for login endpoint in colossus/src/main/java/id/colossus/budget/account/config/
+- [X] T022 [US1] Create registration Thymeleaf page in colossus/src/main/resources/templates/auth/register.html
+- [X] T023 [US1] Create login Thymeleaf page in colossus/src/main/resources/templates/auth/login.html
 - [ ] T024 [US1] Add authentication success handler to redirect to account list in colossus/src/main/java/id/colossus/budget/account/config/
-- [ ] T025 [US1] Add JS for form submission handling in colossus/src/main/resources/static/js/auth.js
+- [X] T025 [US1] Add JS for form submission handling in colossus/src/main/resources/static/js/auth.js
 
 ### Phase 4: User Story 2 - Create Budget Account (Priority: P1)
 

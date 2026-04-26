@@ -1,7 +1,7 @@
 <!--
 Sync Impact Report:
-- Version change: 1.2.0 → 1.3.0 (Minor - Added submodule info and workflow rule)
-- Modified sections: System (added submodule details and feature change workflow)
+- Version change: 1.3.0 → 1.4.0 (Minor - Added Frontend Code Standards)
+- Added sections: VI. Frontend Code Standards (Thymeleaf + JavaScript)
 - Templates requiring updates: ✅ plan-template.md, ✅ spec-template.md, ✅ tasks-template.md, ✅ README.md
 - Follow-up TODOs: None
 -->
@@ -39,6 +39,29 @@ The backend must follow a modular structure:
 - **common-util**: Common utility functions and logic.
 - **common-lang**: Enums, constants, and POJO classes commonly used across the project.
 
+### VI. Frontend Code Standards (Thymeleaf + JavaScript)
+All Thymeleaf templates and JavaScript must follow these rules:
+
+**Thymeleaf Best Practices:**
+- Use fragments for reusable components (header, footer, navigation)
+- Use Layout Dialect (`th:fragment`, `th:replace`) for consistent page structure
+- Keep templates in `src/main/resources/templates/` following naming conventions
+- Use `th:text` and `th:utext` for text content (utext for unescaped HTML)
+- Use `@{/path}` syntax for URL generation (never hardcode URLs)
+- Include CSRF tokens in all forms using `th:csrf`
+- Externalize user-facing text to `messages.properties` for i18n support
+- Keep business logic in controllers, NOT in templates
+
+**JavaScript Best Practices:**
+- Place JavaScript in `src/main/resources/static/js/`
+- Use ES6+ syntax with const/let (avoid var)
+- Keep functions small and single-purpose
+- Use meaningful variable and function names
+- Add JSDoc comments for functions
+- Handle errors with try-catch blocks
+- Use async/await for asynchronous operations
+- Avoid inline scripts; use external files with th:src="@{/js/file.js}"
+
 ## Development Workflow
 
 ### Branch Strategy
@@ -55,4 +78,4 @@ The backend must follow a modular structure:
 
 The constitution supersedes all other practices. Amendments require documentation, approval, and a migration plan. All PRs and reviews must verify compliance with the constitution. Complexity must be justified and documented.
 
-**Version**: 1.3.0 | **Ratified**: 2026-04-26 | **Last Amended**: 2026-04-26
+**Version**: 1.4.0 | **Ratified**: 2026-04-26 | **Last Amended**: 2026-04-26

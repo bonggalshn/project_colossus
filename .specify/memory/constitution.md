@@ -1,8 +1,8 @@
 <!--
 Sync Impact Report:
-- Version change: 1.6.0 → 1.7.0 (Minor - Updated system definition to include backend and frontend)
-- Modified sections: System (Colossus Engine includes backend and frontend)
-- Templates requiring updates: ✅ plan-template.md, ✅ spec-template.md, ✅ tasks-template.md, ✅ README.md
+- Version change: 1.7.0 → 1.8.0 (Minor - Added module organization principle)
+- Modified sections: Added "Module Organization" principle
+- Templates requiring updates: ✅ plan-template.md, ✅ spec-template.md, ✅ tasks-template.md
 - Follow-up TODOs: None
 -->
 
@@ -17,21 +17,38 @@ Sync Impact Report:
 
 ## Core Principles
 
-### I. Clean Code and Documentation
+### I. Module Organization
+The project follows a strict two-repository structure:
+
+**Parent Repository** (`project_colossus`):
+- Contains only markdown documentation
+- Stores specs, requirements, tasks, plans, and design documents
+- Location: `specs/` directory
+- **DO NOT** place any code files here
+
+**Submodule Repository** (`colossus`):
+- Contains all code implementation
+- Java source code: `colossus/src/main/java/id/colossus/`
+- Thymeleaf templates: `colossus/src/main/resources/templates/`
+- Static resources: `colossus/src/main/resources/static/`
+- Database migrations: `colossus/src/main/resources/db/`
+- All implementation artifacts must be in the submodule
+
+### II. Clean Code and Documentation
 The code must be clean and have Javadoc to explain each method's purpose. This ensures maintainability and clarity for all developers working on the project.
 
-### II. Separation of Responsibilities
+### III. Separation of Responsibilities
 The frontend must always communicate with the backend using REST API. This ensures a clear separation of responsibilities between the frontend and backend layers.
 
-### III. Branch Management
+### IV. Branch Management
 Never push to the submodule's main or master branch. Always push to a feature branch. Merging to the main or master branch is done manually by the user via pull request.
 
-### IV. Technology Stack
+### V. Technology Stack
 The project uses Java 25 with Spring Boot for the backend and Thymeleaf for the frontend. PostgreSQL is used as the database. The main dependencies are:
 - spring-boot-starter-webmvc (REST API)
 - spring-boot-starter-thymeleaf (Frontend template engine)
 
-### V. Backend Structure
+### VI. Backend Structure
 The backend must follow a modular structure:
 - **facade**: The main interface for external communication.
 - **biz-service**: Business logic layer.
@@ -41,7 +58,7 @@ The backend must follow a modular structure:
 - **common-util**: Common utility functions and logic.
 - **common-lang**: Enums, constants, and POJO classes commonly used across the project.
 
-### VI. Frontend Code Standards (Thymeleaf + JavaScript)
+### VII. Frontend Code Standards (Thymeleaf + JavaScript)
 All Thymeleaf templates and JavaScript must follow these rules:
 
 **Thymeleaf Best Practices:**
@@ -64,7 +81,7 @@ All Thymeleaf templates and JavaScript must follow these rules:
 - Use async/await for asynchronous operations
 - Avoid inline scripts; use external files with th:src="@{/js/file.js}"
 
-### VII. REST API Standards
+### VIII. REST API Standards
 All REST controllers must follow these rules:
 
 **Controller Best Practices:**
@@ -84,7 +101,7 @@ All REST controllers must follow these rules:
 - Create custom exceptions (e.g., `ResourceNotFoundException`, `BadRequestException`)
 - Return consistent error response structure
 
-### VIII. Database Access Standards
+### IX. Database Access Standards
 All JPA repositories and database operations must follow these rules:
 
 **Repository Best Practices:**
@@ -109,7 +126,7 @@ All JPA repositories and database operations must follow these rules:
 - Cap page sizes in public APIs
 - Enable query logging for development; disable in production
 
-### IX. Database Schema Management
+### X. Database Schema Management
 All database schema changes must follow these rules:
 
 **DDL (Data Definition Language):**
@@ -148,4 +165,4 @@ DML manipulates data within tables (INSERT, UPDATE, DELETE).
 
 The constitution supersedes all other practices. Amendments require documentation, approval, and a migration plan. All PRs and reviews must verify compliance with the constitution. Complexity must be justified and documented.
 
-**Version**: 1.7.0 | **Ratified**: 2026-04-26 | **Last Amended**: 2026-04-26
+**Version**: 1.8.0 | **Ratified**: 2026-04-26 | **Last Amended**: 2026-04-27

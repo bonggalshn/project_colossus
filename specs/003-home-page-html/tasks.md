@@ -4,29 +4,28 @@
 **Branch**: 003-home-page-html
 **Spec**: specs/003-home-page-html/spec.md
 **Plan**: specs/003-home-page-html/plan.md
-
-## Phase 1: Setup
-
-- [ ] T001 Create project directory structure (index.html, assets/css/, assets/js/)
-- [ ] T002 Create base HTML document structure in index.html
-- [ ] T003 Create base CSS file in assets/css/style.css
+**Location**: colossus submodule
 
 ## Phase 2: Foundational
 
-- [ ] T004 [P] Implement HTML5 semantic structure (header, nav, main, footer)
-- [ ] T005 [P] Set up CSS custom properties for cyberpunk theme
-- [ ] T006 Configure responsive viewport, base typography (system fonts), and fallback stack
+**Location**: colossus/src/main/resources/
+
+- [X] T004 [P] Implement HTML5 semantic structure (header, nav, main, footer)
+- [X] T005 [P] Set up CSS custom properties for cyberpunk theme
+- [X] T006 Configure responsive viewport, base typography (system fonts), and fallback stack
+
+**Location**: colossus submodule (colossus/src/main/resources/)
 
 ## Phase 3: User Story 1 - View Home Page (P1)
 
 **Goal**: Display welcome message and navigation on home page
 
-**Independent Test**: Open index.html in browser, verify welcome message and navigation render correctly
+**Independent Test**: Open home page in browser, verify welcome message and navigation render correctly
 
-- [ ] T007 [P] [US1] Create header with navigation in index.html
-- [ ] T008 [P] [US1] Create main content section with welcome message
-- [ ] T009 [P] [US1] Implement cyberpunk theme styling in assets/css/style.css
-- [ ] T010 [US1] Create footer with copyright in index.html
+- [X] T007 [P] [US1] Create header with navigation in home.html
+- [X] T008 [P] [US1] Create main content section with welcome message
+- [X] T009 [P] [US1] Implement cyberpunk theme styling in style.css
+- [X] T010 [US1] Create footer with copyright in home.html
 
 ## Phase 4: User Story 2 - Navigate from Home Page (P2)
 
@@ -34,8 +33,8 @@
 
 **Independent Test**: Click navigation link and verify it leads to destination
 
-- [ ] T011 [P] [US2] Add navigation link href attributes
-- [ ] T012 [P] [US2] Implement hover effects for navigation links in CSS
+- [X] T011 [P] [US2] Add navigation link href attributes with Thymeleaf @{} syntax
+- [X] T012 [P] [US2] Implement hover effects for navigation links in CSS
 
 ## Phase 5: User Story 3 - Access on Different Devices (P3)
 
@@ -43,21 +42,21 @@
 
 **Independent Test**: Resize browser, verify layout adapts to 320px-1920px
 
-- [ ] T013 [P] [US3] Implement responsive grid/flex layout in CSS
-- [ ] T014 [P] [US3] Add media queries for mobile (320px-768px)
-- [ ] T015 [P] [US3] Add media queries for tablet (768px-1024px)
-- [ ] T016 [P] [US3] Verify desktop layout (1024px-1920px)
+- [X] T013 [P] [US3] Implement responsive grid/flex layout in CSS
+- [X] T014 [P] [US3] Add media queries for mobile (320px-768px)
+- [X] T015 [P] [US3] Add media queries for tablet (768px-1024px)
+- [X] T016 [P] [US3] Verify desktop layout (1024px-1920px)
 
 ## Phase 6: Polish & Cross-Cutting
 
 **Goal**: Edge cases and final polish
 
-- [ ] T017 [P] Implement loading indicator for assets
-- [ ] T018 [P] Add fallback fonts for font loading failure
-- [ ] T019 Verify WCAG 2.1 AA contrast ratio
-- [ ] T020 Verify progressive enhancement (no JS required for core functionality)
-- [ ] T021 Test in multiple browsers (Chrome, Firefox, Safari, Edge, Opera)
-- [ ] T022 HTML5 validation
+- [X] T017 [P] Implement loading indicator for assets
+- [X] T018 [P] Add fallback fonts for font loading failure
+- [X] T019 Verify WCAG 2.1 AA contrast ratio
+- [X] T020 Verify progressive enhancement (no JS required for core functionality)
+- [X] T021 Test in multiple browsers (Chrome, Firefox, Safari, Edge, Opera)
+- [X] T022 HTML5 validation
 
 ## Dependencies
 

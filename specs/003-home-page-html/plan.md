@@ -47,17 +47,16 @@ specs/003-home-page-html/
 └── tasks.md             # Phase 2 output (/speckit.tasks command - NOT created by /speckit.plan)
 ```
 
-### Source Code (repository root)
+### Source Code (colossus submodule)
 
 ```text
-# Static HTML website
-index.html          # Main home page
-
-assets/
-├── css/
-│   └── style.css  # Main stylesheet
-└── js/
-    └── main.js   # Optional JavaScript
+# Thymeleaf + Static Resources (colossus)
+colossus/src/main/resources/
+├── templates/
+│   └── home.html        # Thymeleaf template
+└── static/
+    └── css/
+        └── style.css  # Cyberpunk theme CSS
 
 # No backend required - static page
 ```
@@ -67,27 +66,23 @@ assets/
 ### Component Diagram
 ```mermaid
 graph TD
-    Browser[Browser] --> index[index.html]
-    index --> header[Header/Nav]
-    index --> main[Main Content]
-    index --> footer[Footer]
-    index --> style_[CSS Styles]
-    style_ --> theme[Cyberpunk Theme]
-    style_ --> responsive[Responsive Layout]
-    main --> welcome[Welcome Message]
+    Browser[Browser] --> HomeController[HomeController]
+    HomeController --> home[home.html]
+    home --> css[style.css]
+    home --> theme[Cyberpunk Theme]
+    home --> responsive[Responsive Layout]
+    css --> welcome[Welcome Message]
 ```
 
 ### Structure Diagram
 ```mermaid
 graph TD
-    A[index.html] --> B[Header]
-    A --> C[Main]
-    A --> D[Footer]
-    B --> E[Navigation Links]
-    C --> F[Hero/Welcome]
-    C --> G[Content Sections]
-    D --> H[Copyright]
-    D --> I[Contact Links]
+    home[home.html] --> header[Header]
+    home[home.html] --> main[Main]
+    home[home.html] --> footer[Footer]
+    header --> nav[Navigation Links]
+    main --> hero[Hero/Welcome]
+    footer --> copyright[Copyright]
 ```
 
 ## Complexity Tracking

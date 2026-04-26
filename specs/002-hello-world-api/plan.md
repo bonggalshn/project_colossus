@@ -18,7 +18,7 @@ This plan implements a simple REST API with three endpoints: a basic hello world
 -->
 
 **Language/Version**: Java 25  
-**Primary Dependencies**: Spring Boot 3.x, Spring Web MVC, Jackson (JSON processing)  
+**Primary Dependencies**: Spring Boot 4.0.6, Spring Web MVC, Jackson (JSON processing)  
 **Storage**: N/A (No database required for this simple API)  
 **Testing**: JUnit 5, Mockito, Spring Boot Test  
 **Target Platform**: Linux/Windows servers, Java 25 runtime environment  
@@ -31,11 +31,14 @@ This plan implements a simple REST API with three endpoints: a basic hello world
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-- ✅ Clean code and Javadoc for all methods. (Will implement with proper Java documentation)
-- ✅ Separation of responsibilities between frontend and backend using REST API. (API-only implementation, no frontend)
-- ✅ Branch management: No direct pushes to main or master; use feature branches and pull requests. (Currently on feature branch 002-hello-world-api)
-- ✅ Technology stack: Java 25, Spring Boot, Thymeleaf, PostgreSQL. (Using Java 25 + Spring Boot, Thymeleaf and PostgreSQL not needed for this simple API)
-- ✅ Backend structure: facade, biz-service, core-service, repository, integration, common-util, common-lang. (Will implement modular structure despite simplicity)
+- ✅ Clean code and Javadoc for all methods per Constitution I
+- ✅ Separation of responsibilities (Controller→Facade→BizService→CoreService) per Constitution II
+- ✅ Branch management: feature branches and PRs per Constitution III
+- ✅ Technology stack: Java 25, Spring Boot 4.0.6, Thymeleaf, PostgreSQL per Constitution IV (Thymeleaf exempted - REST API-only project)
+- ✅ Backend structure: facade, biz-service, core-service, repository, integration, common-util, common-lang per Constitution V
+- ✅ REST API: @RestController, proper HTTP methods, DTOs, thin controllers per Constitution VII
+- ✅ Exception handling: @RestControllerAdvice, custom exceptions per Constitution VII
+- ✅ Database: N/A (no persistence required for this feature)
 
 ## Project Structure
 
@@ -60,10 +63,10 @@ specs/[###-feature]/
 -->
 
 ```text
-backend/
+colossus/
 ├── src/
 │   ├── main/
-│   │   ├── java/com/colossus/helloworld/
+│   │   ├── java/id/colossus/helloworld/
 │   │   │   ├── facade/
 │   │   │   │   ├── HelloWorldFacade.java
 │   │   │   │   └── HealthCheckFacade.java
@@ -74,26 +77,34 @@ backend/
 │   │   │   │   ├── HelloWorldCoreService.java
 │   │   │   │   └── HealthCheckCoreService.java
 │   │   │   ├── repository/
-│   │   │   │   └── (empty - no DB needed)
+│   │   │   │   ├── (empty - no DB needed)
 │   │   │   ├── integration/
-│   │   │   │   └── (empty - no external integrations)
+│   │   │   │   ├── (empty - no external integrations)
 │   │   │   ├── commonutil/
 │   │   │   │   ├── ApiResponse.java
 │   │   │   │   └── Constants.java
 │   │   │   ├── commonlang/
-│   │   │   │   └── (enums and POJOs if needed)
-│   │   │   └── controller/
-│   │   │       ├── HelloWorldController.java
-│   │   │       └── HealthCheckController.java
-│   │   └── resources/
-│   │       └── application.properties
-│   └── test/
-│       ├── java/com/colossus/helloworld/
-│       │   ├── facade/
-│       │   ├── bizservice/
-│       │   ├── coreservice/
-│       │   └── controller/
-│       └── resources/
+│   │   │   │   ├── (enums and POJOs if needed)
+│   │   │   │   └── controller/
+│   │   │   │       ├── HelloWorldController.java
+│   │   │   │       └── HealthCheckController.java
+│   │   │   │   └── exception/
+│   │   │   │       ├── GlobalExceptionHandler.java
+│   │   │   │       ├── ResourceNotFoundException.java
+│   │   │   │       └── BadRequestException.java
+│   │   │   │   └── ColossusEngineApplication.java
+│   │   │   └── resources/
+│   │   │       ├── application.properties
+│   │   │       └── db/
+│   │   │           ├── ddl/
+│   │   │           └── dml/
+│   │   └── test/
+│   │       ├── java/id/colossus/helloworld/
+│   │       │   ├── facade/
+│   │       │   ├── bizservice/
+│   │       │   ├── coreservice/
+│   │       │   └── controller/
+│   │       └── resources/
 └── pom.xml
 ```
 

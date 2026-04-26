@@ -68,7 +68,12 @@ As a developer, I want to add a health check endpoint that returns the API statu
 - **FR-003**: System MUST provide a health check endpoint at `/api/health` that returns API status and version
 - **FR-004**: System MUST return appropriate HTTP status codes (200 for success, 405 for unsupported methods)
 - **FR-005**: System MUST include proper Content-Type headers (`application/json`) in all responses
-- **FR-006**: System MUST handle edge cases gracefully (invalid parameters, unsupported methods)
+- **FR-006**: System MUST handle edge cases gracefully including:
+  - Invalid/missing name parameter: Return 400 Bad Request
+  - Name parameter too long (>100 chars): Return 400 Bad Request with clear error message
+  - Name parameter with special characters: Return 400 Bad Request
+  - Unsupported HTTP method (POST, PUT, DELETE): Return 405 Method Not Allowed
+  - Internal server error: Return 500 Internal Server Error
 - **FR-007**: System MUST be documented with clear API specifications (OpenAPI/Swagger recommended)
 
 ### Key Entities *(include if feature involves data)*

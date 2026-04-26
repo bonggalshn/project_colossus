@@ -1,0 +1,14 @@
+# Log Files
+*.log
+colossus.stdout.log
+colossus.stderr.log
+colossus.pid
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db

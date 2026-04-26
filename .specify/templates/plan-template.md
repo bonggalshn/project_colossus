@@ -98,6 +98,50 @@ ios/ or android/
 **Structure Decision**: [Document the selected structure and reference the real
 directories captured above]
 
+## Diagrams
+
+### Sequence Diagram
+```mermaid
+sequenceDiagram
+    participant User
+    participant Frontend
+    participant Backend
+    participant Database
+
+    User->>Frontend: Request
+    Frontend->>Backend: REST API Call
+    Backend->>Database: Query/Update
+    Database-->>Backend: Response
+    Backend-->>Frontend: REST API Response
+    Frontend-->>User: Display
+```
+
+### Component Diagram
+```mermaid
+graph TD
+    A[Frontend] -->|REST API| B[Backend]
+    B --> C[Facade]
+    C --> D[Biz-Service]
+    C --> E[Core-Service]
+    D --> F[Repository]
+    E --> F
+    F --> G[Database]
+    B --> H[Integration]
+    B --> I[Common-Util]
+    B --> J[Common-Lang]
+```
+
+### Use Case Diagram
+```mermaid
+graph TD
+    A[User] --> B[Use Case 1]
+    A --> C[Use Case 2]
+    A --> D[Use Case 3]
+    B --> E[Backend]
+    C --> E
+    D --> E
+```
+
 ## Complexity Tracking
 
 > **Fill ONLY if Constitution Check has violations that must be justified**

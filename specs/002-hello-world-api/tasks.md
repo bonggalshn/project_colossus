@@ -42,7 +42,7 @@ This is the MVP. Implementing just these tasks will provide a working API that c
 
 ### Tests
 
-- [X] T010 [P] [US1] Create HelloWorldControllerTest in colossus/src/test/java/id/colossus/controller/
+- [ ] T010 [P] [US1] Create HelloWorldControllerTest in colossus/src/test/java/id/colossus/controller/
 
 ### Implementation
 
@@ -63,13 +63,13 @@ This is the MVP. Implementing just these tasks will provide a working API that c
 
 ### Implementation
 
-- [ ] T016 [US2] Extend HelloWorldController to accept optional query parameter `name`
+- [X] T016 [US2] Extend HelloWorldController to accept optional query parameter `name`
 
-- [ ] T017 [US2] Update HelloWorldCoreService to handle parameterized greeting
+- [X] T017 [US2] Update HelloWorldCoreService to handle parameterized greeting
 
-- [ ] T018 [US2] Add validation for name parameter (max 100 chars per API contract)
+- [X] T018 [US2] Add validation for name parameter (max 100 chars per API contract)
 
-- [ ] T019 [US2] Add edge case handling for invalid/missing parameters
+- [X] T019 [US2] Add edge case handling for invalid/missing parameters
 
 ## Phase 5: User Story 3 - Health Check Endpoint (P3)
 
@@ -78,13 +78,13 @@ This is the MVP. Implementing just these tasks will provide a working API that c
 
 ### Implementation
 
-- [ ] T020 [US3] Implement HealthCheckController with GET /api/health endpoint
+- [X] T020 [US3] Implement HealthCheckController with GET /api/health endpoint
 
-- [ ] T021 [US3] Implement HealthCheckFacade in colossus/src/main/java/id/colossus/facade/
+- [X] T021 [US3] Implement HealthCheckFacade in colossus/src/main/java/id/colossus/facade/
 
-- [ ] T022 [US3] Implement HealthCheckCoreService for health status logic
+- [X] T022 [US3] Implement HealthCheckCoreService for health status logic
 
-- [ ] T023 [US3] Add uptime tracking per API contract
+- [X] T023 [US3] Add uptime tracking per API contract
 
 ## Phase 6: Polish & Cross-Cutting Concerns
 

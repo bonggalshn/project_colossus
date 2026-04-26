@@ -1,8 +1,8 @@
 <!--
 Sync Impact Report:
-- Version change: 1.8.0 → 1.9.0 (Minor - Added submodule branch management principle)
-- Modified sections: Added "Submodule Branch Management" principle
-- Templates requiring updates: ✅ plan-template.md (Constitution Check aligned), ✅ spec-template.md, ✅ tasks-template.md
+- Version change: 1.9.0 → 1.9.1 (Patch - Added specification workflow branch checkout rule)
+- Modified sections: Enhanced "IV. Branch Management" principle
+- Templates requiring updates: ✅ No template changes required
 - Follow-up TODOs: None
 -->
 
@@ -42,6 +42,12 @@ The frontend must always communicate with the backend using REST API. This ensur
 
 ### IV. Branch Management
 Never push to the submodule's main or master branch. Always push to a feature branch. Merging to the main or master branch is done manually by the user via pull request.
+
+**Specification Workflow**:
+- When `/speckit.specify` is invoked and the feature name is determined, a feature branch MUST be created on the parent module.
+- Immediately after creating the feature branch, the parent module MUST be checked out to that feature branch.
+- All subsequent specification work (planning, tasks) MUST happen on this feature branch.
+- This ensures feature documentation is properly tracked alongside the feature branch.
 
 ### V. Submodule Branch Management
 All submodule edits must follow strict branch alignment rules:
@@ -175,4 +181,4 @@ DML manipulates data within tables (INSERT, UPDATE, DELETE).
 
 The constitution supersedes all other practices. Amendments require documentation, approval, and a migration plan. All PRs and reviews must verify compliance with the constitution. Complexity must be justified and documented.
 
-**Version**: 1.9.0 | **Ratified**: 2026-04-26 | **Last Amended**: 2026-04-27
+**Version**: 1.9.1 | **Ratified**: 2026-04-26 | **Last Amended**: 2026-04-27

@@ -48,6 +48,16 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 1. Run `.specify/scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks` from repo root and parse FEATURE_DIR and AVAILABLE_DOCS list. All paths must be absolute. For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot' (or double-quote if possible: "I'm Groot").
 
+2. **Feature Branch Setup**:
+   - Determine the current branch name from the parent git repository
+   - If working in a submodule (e.g., colossus/), ensure the submodule is on the same feature branch as the parent
+   - Check if the feature branch exists in the submodule, create it if not:
+     ```
+     git fetch origin
+     git branch <feature-branch> origin/<feature-branch> 2>/dev/null || git checkout -b <feature-branch>
+     ```
+   - This ensures the submodule tracks the same branch as the parent module (e.g., 002-hello-world-api)
+
 2. **Check checklists status** (if FEATURE_DIR/checklists/ exists):
    - Scan all checklist files in the checklists/ directory
    - For each checklist, count:

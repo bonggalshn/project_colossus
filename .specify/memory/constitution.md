@@ -1,16 +1,18 @@
 <!--
 Sync Impact Report:
-- Version change: 1.5.0 → 1.6.0 (Minor - Added Database Schema Management)
-- Added sections: IX. Database Schema Management
+- Version change: 1.6.0 → 1.7.0 (Minor - Updated system definition to include backend and frontend)
+- Modified sections: System (Colossus Engine includes backend and frontend)
 - Templates requiring updates: ✅ plan-template.md, ✅ spec-template.md, ✅ tasks-template.md, ✅ README.md
 - Follow-up TODOs: None
 -->
 
 # Colossus Engine Constitution
 
-**System**: Colossus is the main system and operates as a submodule within the project structure.
+**System**: Colossus Engine is the main system containing both backend and frontend components.
 
-- **Submodule**: `colossus` (path: colossus, repository: git@github.com:bonggalshn/colossus.git)
+- **Backend**: Java 25 with Spring Boot, located in `colossus/src/main/java/id/colossus/`
+- **Frontend**: Thymeleaf templates, located in `colossus/src/main/resources/templates/`
+- **Submodule**: The `colossus` directory is a git submodule (path: colossus, repository: git@github.com:bonggalshn/colossus.git)
 - All feature changes must be implemented in the submodule repository first, then synced to the main repository.
 
 ## Core Principles
@@ -146,4 +148,4 @@ DML manipulates data within tables (INSERT, UPDATE, DELETE).
 
 The constitution supersedes all other practices. Amendments require documentation, approval, and a migration plan. All PRs and reviews must verify compliance with the constitution. Complexity must be justified and documented.
 
-**Version**: 1.6.0 | **Ratified**: 2026-04-26 | **Last Amended**: 2026-04-26
+**Version**: 1.7.0 | **Ratified**: 2026-04-26 | **Last Amended**: 2026-04-26

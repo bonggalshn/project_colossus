@@ -25,15 +25,15 @@ This is the MVP. Implementing just these tasks will provide a working API that c
 
 ## Phase 2: Foundational
 
-- [ ] T005 [P] Create ApiResponse POJO in colossus/src/main/java/id/colossus/commonlang/ApiResponse.java
+- [X] T005 [P] Create ApiResponse POJO in colossus/src/main/java/id/colossus/commonlang/ApiResponse.java
 
-- [ ] T006 [P] Create HealthResponse POJO in colossus/src/main/java/id/colossus/commonlang/HealthResponse.java
+- [X] T006 [P] Create HealthResponse POJO in colossus/src/main/java/id/colossus/commonlang/HealthResponse.java
 
-- [ ] T007 Create Constants class in colossus/src/main/java/id/colossus/commonutil/Constants.java
+- [X] T007 Create Constants class in colossus/src/main/java/id/colossus/commonutil/Constants.java
 
-- [ ] T008 [P] Implement global exception handler with @RestControllerAdvice in colossus/src/main/java/id/colossus/controller/GlobalExceptionHandler.java
+- [X] T008 [P] Implement global exception handler with @RestControllerAdvice in colossus/src/main/java/id/colossus/controller/GlobalExceptionHandler.java
 
-- [ ] T009 [P] Implement custom exceptions (ResourceNotFoundException, BadRequestException) in colossus/src/main/java/id/colossus/commonlang/
+- [X] T009 [P] Implement custom exceptions (ResourceNotFoundException, BadRequestException) in colossus/src/main/java/id/colossus/commonlang/
 
 ## Phase 3: User Story 1 - Basic Hello World Endpoint (P1)
 
@@ -42,19 +42,19 @@ This is the MVP. Implementing just these tasks will provide a working API that c
 
 ### Tests
 
-- [ ] T010 [P] [US1] Create HelloWorldControllerTest in colossus/src/test/java/id/colossus/controller/
+- [X] T010 [P] [US1] Create HelloWorldControllerTest in colossus/src/test/java/id/colossus/controller/
 
 ### Implementation
 
-- [ ] T011 [US1] Implement HelloWorldController with GET /api/hello endpoint in colossus/src/main/java/id/colossus/controller/HelloWorldController.java
+- [X] T011 [US1] Implement HelloWorldController with GET /api/hello endpoint in colossus/src/main/java/id/colossus/controller/HelloWorldController.java
 
-- [ ] T012 [US1] Implement HelloWorldFacade in colossus/src/main/java/id/colossus/facade/HelloWorldFacade.java
+- [X] T012 [US1] Implement HelloWorldFacade in colossus/src/main/java/id/colossus/facade/HelloWorldFacade.java
 
-- [ ] T013 [US1] Implement HelloWorldBizService in colossus/src/main/java/id/colossus/bizservice/HelloWorldBizService.java
+- [X] T013 [US1] Implement HelloWorldBizService in colossus/src/main/java/id/colossus/bizservice/HelloWorldBizService.java
 
-- [ ] T014 [US1] Implement HelloWorldCoreService in colossus/src/main/java/id/colossus/coreservice/HelloWorldCoreService.java
+- [X] T014 [US1] Implement HelloWorldCoreService in colossus/src/main/java/id/colossus/coreservice/HelloWorldCoreService.java
 
-- [ ] T015 [US1] Verify endpoint returns correct JSON response per API contract
+- [X] T015 [US1] Verify endpoint returns correct JSON response per API contract
 
 ## Phase 4: User Story 2 - Custom Greeting Endpoint (P2)
 

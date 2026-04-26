@@ -13,7 +13,7 @@
 **Attributes**:
 - `message` (String, required): The response message content
 - `status` (String, optional): Response status (success/error/warning)
-- `timestamp` (LocalDateTime, optional): Response generation timestamp
+- `timestamp` (Instant, optional): Response generation timestamp
 - `version` (String, optional): API version information
 
 **Validation Rules**:

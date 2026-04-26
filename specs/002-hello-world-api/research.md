@@ -8,7 +8,7 @@
 
 ### 1. Technology Stack Selection
 
-**Decision**: Use Java 25 with Spring Boot 3.x for the REST API implementation
+**Decision**: Use Java 25 with Spring Boot 4.x for the REST API implementation
 
 **Rationale**: 
 - Aligns with the project constitution requirement for Java 25 and Spring Boot

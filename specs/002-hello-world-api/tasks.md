@@ -4,7 +4,7 @@
 
 ## Task Summary
 
-- **Total Tasks**: 28
+- **Total Tasks**: 29
 - **Parallelizable**: 11 tasks
 - **User Stories**: 3 (US1, US2, US3)
 
@@ -71,10 +71,6 @@ This is the MVP. Implementing just these tasks will provide a working API that c
 
 - [ ] T019 [US2] Add edge case handling for invalid/missing parameters
 
-## Phase 3.5: API Documentation
-
-- [ ] T019b [US1] Generate OpenAPI/Swagger documentation for all endpoints per FR-007
-
 ## Phase 5: User Story 3 - Health Check Endpoint (P3)
 
 **Goal**: Implement `/api/health` endpoint returning status and version
@@ -100,7 +96,9 @@ This is the MVP. Implementing just these tasks will provide a working API that c
 
 - [ ] T027 Run all acceptance scenarios from spec.md and verify pass
 
-- [ ] T028 Create integration test covering all three endpoints
+- [ ] T028 Generate OpenAPI/Swagger documentation for all endpoints per FR-007
+
+- [ ] T029 Create integration test covering all three endpoints
 
 ## Implementation Strategy
 

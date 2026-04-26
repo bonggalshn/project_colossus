@@ -1,12 +1,17 @@
 <!--
 Sync Impact Report:
-- Version change: N/A → 1.0.0 (Initial version)
-- Added sections: Core Principles, Development Workflow, Governance
+- Version change: 1.2.0 → 1.3.0 (Minor - Added submodule info and workflow rule)
+- Modified sections: System (added submodule details and feature change workflow)
 - Templates requiring updates: ✅ plan-template.md, ✅ spec-template.md, ✅ tasks-template.md, ✅ README.md
 - Follow-up TODOs: None
 -->
 
 # Colossus Engine Constitution
+
+**System**: Colossus is the main system and operates as a submodule within the project structure.
+
+- **Submodule**: `colossus` (path: colossus, repository: git@github.com:bonggalshn/colossus.git)
+- All feature changes must be implemented in the submodule repository first, then synced to the main repository.
 
 ## Core Principles
 
@@ -20,7 +25,9 @@ The frontend must always communicate with the backend using REST API. This ensur
 Never push to the submodule's main or master branch. Always push to a feature branch. Merging to the main or master branch is done manually by the user via pull request.
 
 ### IV. Technology Stack
-The project uses Java 25 with Spring Boot for the backend and Thymeleaf for the frontend. PostgreSQL is used as the database.
+The project uses Java 25 with Spring Boot for the backend and Thymeleaf for the frontend. PostgreSQL is used as the database. The main dependencies are:
+- spring-boot-starter-webmvc (REST API)
+- spring-boot-starter-thymeleaf (Frontend template engine)
 
 ### V. Backend Structure
 The backend must follow a modular structure:
@@ -48,4 +55,4 @@ The backend must follow a modular structure:
 
 The constitution supersedes all other practices. Amendments require documentation, approval, and a migration plan. All PRs and reviews must verify compliance with the constitution. Complexity must be justified and documented.
 
-**Version**: 1.0.0 | **Ratified**: 2026-04-26 | **Last Amended**: 2026-04-26
+**Version**: 1.3.0 | **Ratified**: 2026-04-26 | **Last Amended**: 2026-04-26

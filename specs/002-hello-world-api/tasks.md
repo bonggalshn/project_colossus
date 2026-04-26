@@ -15,13 +15,13 @@ This is the MVP. Implementing just these tasks will provide a working API that c
 
 ## Phase 1: Setup
 
-- [ ] T001 Create package structure in colossus/src/main/java/id/colossus/ based on backend architecture (facade, bizservice, coreservice, repository, integration, commonutil, commonlang)
+- [X] T001 Create package structure in colossus/src/main/java/id/colossus/ based on backend architecture (facade, bizservice, coreservice, repository, integration, commonutil, commonlang)
 
-- [ ] T002 Create application configuration in colossus/src/main/resources/application.properties
+- [X] T002 Create application configuration in colossus/src/main/resources/application.properties
 
-- [ ] T003 Configure Jackson for JSON processing in application.properties (date format, serialization)
+- [X] T003 Configure Jackson for JSON processing in application.properties (date format, serialization)
 
-- [ ] T004 Add CORS configuration for development environment per API contract
+- [X] T004 Add CORS configuration for development environment per API contract
 
 ## Phase 2: Foundational
 

@@ -42,7 +42,7 @@ This is the MVP. Implementing just these tasks will provide a working API that c
 
 ### Tests
 
-- [ ] T010 [P] [US1] Create HelloWorldControllerTest in colossus/src/test/java/id/colossus/controller/
+- [X] T010 [P] [US1] Create HelloWorldControllerTest in colossus/src/test/java/id/colossus/helloworld/controller/
 
 ### Implementation
 
@@ -88,17 +88,17 @@ This is the MVP. Implementing just these tasks will provide a working API that c
 
 ## Phase 6: Polish & Cross-Cutting Concerns
 
-- [ ] T024 Add Javadoc comments to all public methods per Constitution I
+- [X] T024 Add Javadoc comments to all public methods per Constitution I
 
-- [ ] T025 Verify proper HTTP status codes: 200, 400, 405, 500 per API contract
+- [X] T025 Verify proper HTTP status codes: 200, 400, 405, 500 per API contract
 
-- [ ] T026 Ensure Content-Type: application/json in all responses
+- [X] T026 Ensure Content-Type: application/json in all responses
 
-- [ ] T027 Run all acceptance scenarios from spec.md and verify pass
+- [X] T027 Run all acceptance scenarios from spec.md and verify pass
 
-- [ ] T028 Generate OpenAPI/Swagger documentation for all endpoints per FR-007
+- [X] T028 Generate OpenAPI/Swagger documentation for all endpoints per FR-007
 
-- [ ] T029 Create integration test covering all three endpoints
+- [X] T029 Create integration test covering all three endpoints
 
 ## Implementation Strategy
 
